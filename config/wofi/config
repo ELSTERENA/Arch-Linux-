@@ -1,0 +1,8 @@
+[general]
+show-icons=false
+use-scroll=true
+drun-encoding=utf-8
+
+# Для window-режима
+matching=full
+# Цвет фокуса и шрифт можно настроить через style.css
