@@ -1,44 +1,70 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 30,
-  "modules-left": ["custom/appmenu", "custom/workspaces", "custom/layouts"],
-  "modules-center": ["clock"],
-  "modules-right": ["pulseaudio", "network", "battery", "custom/vpn", "custom/brightness", "custom/windows"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["custom/playerctl"],
+  "modules-right": ["custom/weather", "pulseaudio", "network", "battery", "clock"],
 
-  "custom/appmenu": {
-    "exec": "~/.config/waybar/scripts/app-menu.sh",
-    "format": "",
-    "on-click": "~/.config/waybar/scripts/app-menu.sh"
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "󰇮",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": ""
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
   },
-  "custom/workspaces": {
-    "exec": "~/.config/waybar/scripts/workspaces.sh",
-    "interval": 2
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 40
   },
-  "custom/layouts": {
-    "exec": "~/.config/waybar/scripts/layouts.sh",
-    "interval": 2
+
+  "custom/playerctl": {
+    "exec": "~/.config/waybar/scripts/playerctl_status.sh",
+    "return-type": "text",
+    "format": "{}",
+    "interval": 5,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "tooltip": false
   },
+
+  "custom/weather": {
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "return-type": "text",
+    "interval": 1800,
+    "format": "{}",
+    "tooltip": true
+  },
+
+  "clock": {
+    "format": " {:%H:%M}  {:%d.%m.%Y}",
+    "tooltip-format": "<big>{:%A, %d %B %Y}</big>
+<tt>{:%H:%M:%S}</tt>",
+    "interval": 60
+  },
+
   "pulseaudio": {
-    "format": " {volume}%"
+    "format": " {volume}%",
+    "format-muted": " Mute"
   },
-  "network": {
-    "format-wifi": " {essid}"
-  },
+
   "battery": {
-    "format": " {capacity}%"
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "interval": 30
   },
-  "custom/vpn": {
-    "exec": "~/.config/waybar/scripts/vpn.sh",
-    "interval": 10
-  },
-  "custom/brightness": {
-    "exec": "~/.config/waybar/scripts/brightness.sh",
-    "interval": 5
-  },
-  "custom/windows": {
-    "exec": "~/.config/waybar/scripts/window-switcher.sh",
-    "format": "",
-    "on-click": "~/.config/waybar/scripts/window-switcher.sh"
+
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈀 {ifname}",
+    "format-disconnected": "󰖪 Disconnected"
   }
 }

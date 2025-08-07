@@ -1,62 +1,60 @@
-/* Catppuccin Macchiato palette */
-:root {
-  --rosewater: #f4dbd6;
-  --flamingo:  #f0c6c6;
-  --pink:      #f5bde6;
-  --mauve:     #c6a0f6;
-  --red:       #ed8796;
-  --maroon:    #ee99a0;
-  --peach:     #f5a97f;
-  --yellow:    #eed49f;
-  --green:     #a6da95;
-  --teal:      #8bd5ca;
-  --sky:       #91d7e3;
-  --sapphire:  #7dc4e4;
-  --blue:      #8aadf4;
-  --lavender:  #b7bdf8;
-  --text:      #cad3f5;
-  --subtext1:  #b8c0e0;
-  --subtext0:  #a5adcb;
-  --overlay2:  #939ab7;
-  --overlay1:  #8087a2;
-  --overlay0:  #6e738d;
-  --surface2:  #5b6078;
-  --surface1:  #494d64;
-  --surface0:  #363a4f;
-  --base:      #24273a;
-  --mantle:    #1e2030;
-  --crust:     #181926;
+* {
+  font-family: JetBrainsMono Nerd Font, monospace;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  padding: 4px 8px;
+  min-height: 20px;
 }
 
-#custom-appmenu, #custom-windows {
-  padding: 0 10px;
-  cursor: pointer;
-  font-size: 18px;
-  color: var(--peach);
+window#waybar {
+  background: rgba(30, 30, 46, 0.95);
+  border-bottom: 2px solid #89b4fa;
+  color: #cdd6f4;
 }
 
-#custom-workspaces {
+#workspaces button {
+  background: transparent;
+  color: #89dceb;
+  margin: 2px;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+#workspaces button.active {
+  background-color: #89b4fa;
+  color: #1e1e2e;
+}
+
+#workspaces button:hover {
+  background-color: #b4befe;
+  color: black;
+}
+
+#clock, #battery, #network, #pulseaudio, #custom-player, #custom-playerctl, #custom-weather {
+  margin: 0 5px;
+}
+
+#custom-playerctl {
   font-weight: bold;
-  padding: 0 8px;
-  color: var(--text);
+  color: #a6e3a1;
 }
 
-#custom-layouts {
-  color: var(--mauve);
-  padding: 0 8px;
+#custom-weather {
+  color: #94e2d5;
 }
 
-#pulseaudio, #network, #battery {
-  padding: 0 10px;
-  color: var(--sky);
+#battery.warning {
+  color: #f9e2af;
 }
 
-#custom-vpn {
-  color: var(--red);
-  padding: 0 10px;
+#battery.critical {
+  color: #f38ba8;
 }
 
-#custom-brightness {
-  color: var(--yellow);
-  padding: 0 10px;
+tooltip {
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 8px;
+  padding: 8px;
 }
