@@ -1,70 +1,56 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["custom/playerctl"],
-  "modules-right": ["custom/weather", "pulseaudio", "network", "battery", "clock"],
+  "height": 30,
+  "modules-left": ["custom/firefox", "custom/terminal", "custom/filemanager"],
+  "modules-center": ["custom/playerctl", "clock"],
+  "modules-right": ["network", "battery", "custom/power"],
 
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "format-icons": {
-      "1": "󰇮",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    "persistent-workspaces": {
-      "*": 5
-    }
+  "custom/firefox": {
+    "format": "",
+    "tooltip": "Firefox",
+    "on-click": "firefox"
   },
 
-  "hyprland/window": {
-    "format": "{}",
-    "max-length": 40
+  "custom/terminal": {
+    "format": "",
+    "tooltip": "Kitty Terminal",
+    "on-click": "kitty"
+  },
+
+  "custom/filemanager": {
+    "format": "",
+    "tooltip": "File Manager",
+    "on-click": "thunar"
   },
 
   "custom/playerctl": {
     "exec": "~/.config/waybar/scripts/playerctl_status.sh",
-    "return-type": "text",
-    "format": "{}",
-    "interval": 5,
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-middle": "playerctl previous",
+    "interval": 1,
     "tooltip": false
   },
 
-  "custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.sh",
-    "return-type": "text",
-    "interval": 1800,
-    "format": "{}",
-    "tooltip": true
-  },
-
   "clock": {
-    "format": " {:%H:%M}  {:%d.%m.%Y}",
-    "tooltip-format": "<big>{:%A, %d %B %Y}</big>
-<tt>{:%H:%M:%S}</tt>",
-    "interval": 60
-  },
-
-  "pulseaudio": {
-    "format": " {volume}%",
-    "format-muted": " Mute"
-  },
-
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "interval": 30
+    "format": "{:%a %d %b  %H:%M}",
+    "tooltip": false,
+    "on-click": "gnome-calendar"
   },
 
   "network": {
-    "format-wifi": " {essid} ({signalStrength}%)",
-    "format-ethernet": "󰈀 {ifname}",
-    "format-disconnected": "󰖪 Disconnected"
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ipaddr}",
+    "format-disconnected": "󰖪",
+    "tooltip": true
+  },
+
+  "battery": {
+    "format": "{capacity}% 󱐋",
+    "tooltip": true
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Power Menu",
+    "on-click": "wlogout"
   }
 }

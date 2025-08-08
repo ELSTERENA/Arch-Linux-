@@ -1,15 +1,16 @@
 #!/bin/bash
 
 status=$(playerctl status 2>/dev/null)
+
 if [ "$status" = "Playing" ]; then
-    icon=""
+  icon=""
 elif [ "$status" = "Paused" ]; then
-    icon=""
+  icon=""
 else
-    echo "󰎆 No Music"
-    exit
+  exit 0
 fi
 
 title=$(playerctl metadata title 2>/dev/null)
 artist=$(playerctl metadata artist 2>/dev/null)
+
 echo "$icon $artist - $title"
